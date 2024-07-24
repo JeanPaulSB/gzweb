@@ -69,7 +69,7 @@ let staticServe = function (req, res) {
 
 
 // HTTP server
-let httpServer = https.createServer(staticServe);
+let httpServer = http.createServer(staticServe);
 httpServer.listen(port);
 
 console.log("running http server");

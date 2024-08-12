@@ -202,6 +202,7 @@ GZ3D.GZIface.prototype.onConnected = function()
     name : '~/pose/info',
     messageType : 'pose',
   });
+  console.log("updating pose")
 
   var poseUpdate = function(message)
   {

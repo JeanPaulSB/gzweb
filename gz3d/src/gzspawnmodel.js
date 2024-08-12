@@ -238,6 +238,7 @@ GZ3D.SpawnModel.prototype.onKeyDown = function(event)
 {
   if ( event.keyCode === 27 ) // Esc
   {
+    console.log("a ver q pasa compa")
     this.finish();
   }
 };

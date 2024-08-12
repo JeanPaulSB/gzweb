@@ -579,6 +579,8 @@ GZ3D.Scene.prototype.getRayCastModel = function(pos, intersect)
   this.scene.getDescendants(allObjects);
   var objects = ray.intersectObjects(allObjects);
 
+  console.log("im raycasting")
+
   var model;
   var point;
   if (objects.length > 0)
@@ -791,6 +793,8 @@ GZ3D.Scene.prototype.setPose = function(model, position, orientation)
   model.quaternion.x = orientation.x;
   model.quaternion.y = orientation.y;
   model.quaternion.z = orientation.z;
+
+  console.log("estamos cambiando la pose")
 };
 
 GZ3D.Scene.prototype.removeAll = function()

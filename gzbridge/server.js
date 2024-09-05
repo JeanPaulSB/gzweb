@@ -3,7 +3,7 @@
 "use strict";
 
 const WebSocketServer = require("websocket").server;
-const https = require("https");
+const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const gzbridge = require("./build/Debug/gzbridge");
@@ -66,21 +66,13 @@ let staticServe = function (req, res) {
     return res.end();
   });
 };
-// options for https server
-const options = {
-  key: fs.readFileSync(
-    path.join("/etc/letsencrypt/live/simulation.dae.com.co/privkey.pem")
-  ),
-  cert: fs.readFileSync(
-    path.join("/etc/letsencrypt/live/simulation.dae.com.co/fullchain.pem")
-  ),
-};
+
 
 // HTTP server
-let httpsServer = https.createServer(staticServe);
-httpsServer.listen(port);
+let httpServer = http.createServer(staticServe);
+httpServer.listen(port);
 
-console.log("running https server");
+console.log("running http server");
 console.log(new Date() + " Static server listening on port: " + port);
 
 // Websocket
@@ -113,7 +105,7 @@ if (gzNode.getIsGzServerConnected()) {
 
 // Start websocket server
 let wsServer = new WebSocketServer({
-  httpServer: httpsServer,
+  httpServer: httpServer,
   // You should not use autoAcceptConnections for production
   // applications, as it defeats all standard cross-origin protection
   // facilities built into the protocol and the browser.  You should
